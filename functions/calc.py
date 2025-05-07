@@ -30,4 +30,11 @@ def square(a):
 
 def cube(a):
     answer =  a**3
-    return answer            
+    return answer 
+
+def sum(*numbers):
+    total = 0
+    for number in numbers:
+        total+= number
+    return total    
+      
