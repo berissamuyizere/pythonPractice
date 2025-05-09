@@ -46,3 +46,11 @@ def count_down_with_break(start, stop):
             break
         start -=1
                  
+
+def count_down_with_odd_numbers(start):
+    while start >=0:
+        if start%2 ==0:
+            start -=1
+            continue
+        print(f"count down at {start}")  
+        start -=1  
