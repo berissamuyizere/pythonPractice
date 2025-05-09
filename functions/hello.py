@@ -43,13 +43,11 @@ def create_sentence(**words):
 def exam_result (*args, **kwargs):
     if not args:
         name = kwargs["name"] if "name" in kwargs else "Student"
-        print(f"Hello {name}, you have no scores recorder for backend")
+        print(f"Hello {name}, you have no scores recorder for {kwargs.course}")
         return
     total=0
     for arg in args:
             total+= arg
     average = total/len(args)
     name = kwargs["name"] if "name" in kwargs else "Student"
-    print(f"Hello {name}, your average score for backend is {average}")
-
-
+    print(f"Hello {name}, your average score for {kwargs.course} is {average}")
