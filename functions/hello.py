@@ -31,7 +31,7 @@ def my_country(name="Uganda"):
 # my_country()
 
 def welcome_student(**kwargs):
-    print(kwargs.values())  # fixed
+    print(kwargs.values())  
 
 welcome_student(name="Berissa", age=24)
 
