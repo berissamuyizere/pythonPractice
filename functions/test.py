@@ -21,7 +21,7 @@ def balanced_str(str):
             consoCount+=1   
     return vowelCout == consoCount
 
-str = "munezer"
+str = "munezero"
 print(balanced_str(str))
 
 def print_num(x):
@@ -59,3 +59,48 @@ def two_lists(z):
 
 z = [0,1,2,3,4,5,6,7,8,9]
 two_lists(z)
+
+def set_methods(numbers):
+    for i in numbers:
+        print(i)
+numbers = {10,30,20,60,40,20}
+set_methods(numbers) 
+
+def perfect_number(number):
+    sum = 0
+    for i in range(1, number):
+        if number%i == 0:
+            sum+=i
+
+    return sum == number        
+
+print(perfect_number(28))
+
+def factorial(n):
+    if n== 0:
+        return 1
+    return n * factorial(n-1)
+print(factorial(7)) 
+
+def case_string(string):
+    lower =0
+    upper=0
+    for char in string:
+        if char.isupper():
+            upper+=1
+        else:
+            lower+=1
+    return [lower , upper]
+print(case_string("AnaLogE"))
+
+
+# def student_details(students):
+    # sortedstudents = sorted(students["score"])
+#     scores = []
+#     for student in students:
+#         student["score"]
+#     sortedscore = sorted(scores)
+
+# students = [{"name": "Queen", "score": 60}, {"name": "Joyline", "score": 70}, {"name": "Keza", "score": 50}, {"name": "Jimmy", "score": 90}]  
+# student_details(students)
+

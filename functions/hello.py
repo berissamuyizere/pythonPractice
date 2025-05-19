@@ -31,23 +31,42 @@ def my_country(name="Uganda"):
 # my_country()
 
 def welcome_student(**kwargs):
-    print(kwargs.values)
+    print(kwargs.values())  # fixed
+
+welcome_student(name="Berissa", age=24)
 
 def create_sentence(**words):
-    sentence = " "
+    sentence = ""
     for word in words.values():
-        sentence+= word
+        sentence += word
         sentence += " "
     return sentence
 
-def exam_result (*args, **kwargs):
+print(create_sentence(word1="Hello", word2="there", word3="Berissa!"))
+
+def exam_result(*args, **kwargs):
     if not args:
         name = kwargs["name"] if "name" in kwargs else "Student"
-        print(f"Hello {name}, you have no scores recorder for {kwargs.course}")
+        course = kwargs["course"] if "course" in kwargs else "the course"
+        print(f"Hello {name}, you have no scores recorded for {course}")
         return
-    total=0
-    for arg in args:
-            total+= arg
-    average = total/len(args)
+    total = sum(args)
+    average = total / len(args)
     name = kwargs["name"] if "name" in kwargs else "Student"
-    print(f"Hello {name}, your average score for {kwargs.course} is {average}")
+    course = kwargs["course"] if "course" in kwargs else "the course"
+    print(f"Hello {name}, your average score for {course} is {average}")
+
+
+exam_result(80, 90, 70, name="Berissa", course="Math")
+
+exam_result(name="Berissa", course="Science")
+
+
+
+
+
+
+
+
+
+
