@@ -104,3 +104,67 @@ print(case_string("AnaLogE"))
 # students = [{"name": "Queen", "score": 60}, {"name": "Joyline", "score": 70}, {"name": "Keza", "score": 50}, {"name": "Jimmy", "score": 90}]  
 # student_details(students)
 
+class LanguageLearning:
+    def __init__(self, languages):
+        self.languages = languages
+        self.user_progress = {}
+    def available_language(self, target_language, level):
+        for lang in self.languages:
+            if lang["name"].lower() == target_language.lower():
+                for material in lang["materials"]:
+                    if material["level"].lower() == level.lower():
+                        return {
+                            "exercises": material["exercises"],
+                            "quiz": [q["question"] for q in material["quiz"]],
+                            "vocabulary": material["vocabulary"],
+                            "resources": material["resources"]
+                        }
+        return "Language or level not found."
+    def complete(self, target_language, level, user_answers):
+        for lang in self.languages:
+            if lang["name"].lower() == target_language.lower():
+                for material in lang["materials"]:
+                    if material["level"].lower() == level.lower():
+                        correct = 0
+                        for i, q in enumerate(material["quiz"]):
+                            if i < len(user_answers) and user_answers[i].lower() == q["answer"].lower():
+                                correct += 1
+                        result = {
+                            "score": correct,
+                            "total": len(material["quiz"]),
+                            "percentage": f"{(correct / len(material['quiz'])) * 100:.2f}%"
+                        }
+                        key = f"{target_language}_{level}"
+                        self.user_progress[key] = result
+                        return result
+        return "Quiz not found."
+    def get_progress(self):
+        return self.user_progress
+# Sample data
+all_languages = [
+    {
+        "name": "French",
+        "materials": [
+            {
+                "level": "Beginner",
+                "quiz": [
+                    {"question": "What is 'hello' in French?", "answer": "bonjour"},
+                    {"question": "What is 'thank you' in French?", "answer": "merci"},
+                    {"question": "What is 'goodbye' in French?", "answer": "au revoir"}
+                ],
+                "exercises": ["Translate 5 simple sentences", "Practice French alphabet"],
+                "vocabulary": ["bonjour", "merci", "au revoir", "chat", "chien"],
+                "resources": {
+                    "grammar": "https://www.lawlessfrench.com/grammar/",
+                    "video": "https://www.youtube.com/watch?v=5MgBikgcWnY",
+                    "dictionary": "https://www.wordreference.com"
+                }
+            }
+        ]
+    }
+]
+# Usage
+learner = LanguageLearning(all_languages)
+print(learner.available_language("French", "Beginner"))
+print(learner.complete("French", "Beginner", ["bonjour", "merci", "au revoir"]))
+print(learner.get_progress())
